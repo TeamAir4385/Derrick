@@ -16,4 +16,8 @@ function doOpen(e){
 	}	
 }
 
+function clickedLogin(e) {
+	Alloy.createController('login').getView();
+}
 
+$.settings.open();

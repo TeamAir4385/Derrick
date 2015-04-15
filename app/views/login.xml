@@ -1,0 +1,13 @@
+<Alloy>
+	<Window id="login" title="Login" class="loginContainer" onOpen="doOpen" >
+		<Label id='loginText'></Label>
+		<View id="lvContainer" >
+			<TextField id="email" class='tfWrapper' hintText="Email" />
+			<TextField id="password" class='tfWrapper' hintText="Password" passwordMask="true"/>
+			<View class="centerHelper">
+				<Button id="doLoginBtn" color="#fff" title="Login" />
+			</View>
+		</View>
+	</Window>
+</Alloy>
+

@@ -1,8 +1,5 @@
-"#contact": {
+"#login": {
 	backgroundColor: "#fff"
-},
-"Label":{
-   color : "#600"
 },
 '.tfWrapper': {
 	top: '6dp',
@@ -10,6 +7,16 @@
 	height: '40dp',
 	border: 1,
 	borderColor: '#000'
+},
+'.centerHelper': {
+	top: '10dp',
+	height: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	layout: 'horizontal'
+},
+ScrollView: {
+	contentHeight: Ti.UI.SIZE,
+	contentWidth: Ti.UI.SIZE
 },
 TextField: {
 	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
@@ -22,6 +29,13 @@ TextField: {
 	paddingLeft: '4dp',
 	backgroundColor: '#fff',
 	color : '#000'
+},
+'#loginText' :{
+    text : "Login Text Goes Here For the App",
+    font:{
+        fontSize:'24dp',
+        fontWeight : 'bold'
+    }
 },
 '#lvContainer' : {
     top:'20dp',
