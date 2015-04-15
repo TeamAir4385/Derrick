@@ -19,7 +19,7 @@ function doOpen(e){
 function clickedLogin(e) {
 	Alloy.createController('login').getView();
 }
-
+//test
 //switch
 //http://docs.appcelerator.com/titanium/3.0/#!/api/Titanium.UI.Switch
 //Might need to add things for iOS
