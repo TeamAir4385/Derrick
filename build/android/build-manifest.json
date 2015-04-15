@@ -1,6 +1,6 @@
 {
-	"target": "emulator",
-	"deployType": "development",
+	"target": "device",
+	"deployType": "test",
 	"classname": "GoApplication",
 	"platformPath": "/home/derrick/.titanium/mobilesdk/linux/3.5.0.GA/android",
 	"modulesHash": "7fb655db1d51a26b74a2778ab4a02a6b",
@@ -21,12 +21,12 @@
 	"fullscreen": false,
 	"skipJSMinification": true,
 	"mergeCustomAndroidManifest": false,
-	"encryptJS": false,
+	"encryptJS": true,
 	"minSDK": 10,
 	"targetSDK": 21,
-	"propertiesHash": "e8cc4a6c74ba6466da302197c80c1470",
+	"propertiesHash": "58768e642a3c620a02a7192e182f25b5",
 	"activitiesHash": "d41d8cd98f00b204e9800998ecf8427e",
 	"servicesHash": "d41d8cd98f00b204e9800998ecf8427e",
 	"jssFilesHash": "d41d8cd98f00b204e9800998ecf8427e",
-	"jarLibHash": "e4447c83bc174405729d59921302543f"
+	"jarLibHash": "85aa85d033293afa20f337c1d0440907"
 }
