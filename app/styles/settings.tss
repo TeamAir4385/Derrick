@@ -1,8 +1,8 @@
 "#settings": {
-	backgroundColor: "#fff",
+	backgroundColor: "#222",
 	color : "#fff"
 },
-"#Label": {
+"Label": {
    color : "#fff"
 },
 "#Push" : {
@@ -16,6 +16,7 @@
 "#pushSwitch" : {
 	top : "10",
 	right : "10",
+	,
 },
 "#loginButton" : {
 	top : "100",

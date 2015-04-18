@@ -1,8 +1,8 @@
 "#contact": {
-	backgroundColor: "#fff"
+	backgroundColor: "#222"
 },
 "Label":{
-   color : "#600"
+   color : "#fff"
 },
 '.tfWrapper': {
 	top: '6dp',

@@ -45,7 +45,7 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.login = Ti.UI.createWindow({
-        backgroundColor: "#fff",
+        backgroundColor: "#222",
         id: "login",
         title: "Login"
     });

@@ -1,5 +1,5 @@
 "#login": {
-	backgroundColor: "#fff"
+	backgroundColor: "#222"
 },
 '.tfWrapper': {
 	top: '6dp',

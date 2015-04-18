@@ -41,7 +41,7 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.settings = Ti.UI.createWindow({
-        backgroundColor: "#fff",
+        backgroundColor: "#222",
         color: "#fff",
         id: "settings",
         title: "Settings"
@@ -49,6 +49,7 @@ function Controller() {
     $.__views.settings && $.addTopLevelView($.__views.settings);
     doOpen ? $.__views.settings.addEventListener("open", doOpen) : __defers["$.__views.settings!open!doOpen"] = true;
     $.__views.Push = Ti.UI.createLabel({
+        color: "#fff",
         top: "20",
         left: "10",
         id: "Push",
@@ -56,6 +57,7 @@ function Controller() {
     });
     $.__views.settings.add($.__views.Push);
     $.__views.Login = Ti.UI.createLabel({
+        color: "#fff",
         top: "110",
         left: "10",
         id: "Login",

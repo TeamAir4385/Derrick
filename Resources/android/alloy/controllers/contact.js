@@ -35,14 +35,14 @@ function Controller() {
     var exports = {};
     var __defers = {};
     $.__views.contact = Ti.UI.createWindow({
-        backgroundColor: "#fff",
+        backgroundColor: "#222",
         id: "contact",
         title: "Contact Us"
     });
     $.__views.contact && $.addTopLevelView($.__views.contact);
     doOpen ? $.__views.contact.addEventListener("open", doOpen) : __defers["$.__views.contact!open!doOpen"] = true;
     $.__views.__alloyId1 = Ti.UI.createLabel({
-        color: "#600",
+        color: "#fff",
         text: "Please feel free to contact us if you are interested or have any questions!",
         top: "15",
         left: "10",
