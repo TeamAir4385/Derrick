@@ -34,7 +34,7 @@ function userActionResponseHandler(_resp) {
 		//Alloy.Globals.CURRENT_USER = _resp.model;
 
 		//$.parentController.loginSuccessAction(_resp);
-
+//secia's name goes here
 	} else {
 		// Show the error message and let the user try again.
 		alert("Error logging in. Please try again.", _resp.error.message);

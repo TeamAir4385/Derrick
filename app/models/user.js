@@ -1,3 +1,5 @@
+//This is taken directly from Lauren and Babb's code. Generated from Titanium
+
 exports.definition = {
 	config : {
 

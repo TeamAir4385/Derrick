@@ -52,7 +52,7 @@ function Controller() {
     $.__views.login && $.addTopLevelView($.__views.login);
     doOpen ? $.__views.login.addEventListener("open", doOpen) : __defers["$.__views.login!open!doOpen"] = true;
     $.__views.loginText = Ti.UI.createLabel({
-        text: "Login Text Goes Here For the App",
+        text: "",
         font: {
             fontSize: "24dp",
             fontWeight: "bold"
@@ -65,7 +65,6 @@ function Controller() {
         width: "280dp",
         height: Ti.UI.SIZE,
         layout: "vertical",
-        borderColor: "orange",
         borderWidth: 0,
         id: "lvContainer"
     });

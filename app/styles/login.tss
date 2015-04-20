@@ -31,7 +31,7 @@ TextField: {
 	color : '#000'
 },
 '#loginText' :{
-    text : "Login Text Goes Here For the App",
+    text : "",
     font:{
         fontSize:'24dp',
         fontWeight : 'bold'
@@ -42,6 +42,5 @@ TextField: {
     width:'280dp',
     height:Ti.UI.SIZE,
     layout:'vertical',
-    borderColor :'orange',
     borderWidth :0
 }
