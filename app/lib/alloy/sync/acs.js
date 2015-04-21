@@ -16,7 +16,7 @@ function Sync(method, model, options) {
 	var object_name = model.config.adapter.collection_name;
 
 	if (object_name === "users") {
-		processACSPhotos(model, method, options);
+		processACSUsers(model, method, options);
 	}
 
 }

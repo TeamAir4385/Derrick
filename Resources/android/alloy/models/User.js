@@ -4,7 +4,7 @@ exports.definition = {
     config: {
         adapter: {
             type: "acs",
-            collection_name: "users"
+            collection_name: "user"
         }
     },
     extendModel: function(Model) {

@@ -146,6 +146,120 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
+    var win = Ti.UI.currentWindow;
+    var contactReq = Titanium.Network.createHTTPClient();
+    var fname = Titanium.UI.createTextField({
+        color: "#336699",
+        top: 100,
+        left: 10,
+        width: 300,
+        height: 40,
+        hintText: "First Name",
+        backgroundImage: "../images/textfield.png",
+        paddingLeft: 8,
+        paddingRight: 8,
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+        returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+        suppressReturn: false
+    });
+    var lname = Titanium.UI.createTextField({
+        color: "#336699",
+        top: 100,
+        left: 10,
+        width: 300,
+        height: 40,
+        hintText: "Last Name",
+        backgroundImage: "../images/textfield.png",
+        paddingLeft: 8,
+        paddingRight: 8,
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+        returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+        suppressReturn: false
+    });
+    var email = Titanium.UI.createTextField({
+        color: "#336699",
+        top: 140,
+        left: 10,
+        width: 300,
+        height: 40,
+        hintText: "Email",
+        backgroundImage: "../images/textfield.png",
+        paddingLeft: 8,
+        paddingRight: 8,
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+        returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+        suppressReturn: false
+    });
+    var phone = Titanium.UI.createTextField({
+        color: "#336699",
+        top: 180,
+        left: 10,
+        width: 300,
+        height: 40,
+        hintText: "Phone",
+        backgroundImage: "../images/textfield.png",
+        paddingLeft: 8,
+        paddingRight: 8,
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT
+    });
+    fname.addEventListener("return", function() {
+        lname.focus();
+    });
+    lname.addEventListener("return", function() {
+        email.focus();
+    });
+    email.addEventListener("return", function() {
+        phone.focus();
+    });
+    win.add(fname);
+    win.add(lname);
+    win.add(email);
+    win.add(phone);
+    $.contact.addEventListener("click", function() {
+        if ("" == fname.value || "" == lname.value || "" == email.value || "" == phone.value) alert("All fields are required"); else {
+            fname.enabled = false;
+            lname.enabled = false;
+            email.enabled = false;
+            phone.enabled = false;
+            contactReq.open("POST", "http://localhost/submit_order.php");
+            var params = {
+                fname: fname.value,
+                lname: lname.value,
+                email: email.value,
+                phone: phone.value
+            };
+            contactReq.send(params);
+        }
+    });
+    contactReq.onload = function() {
+        var json = this.responseText;
+        var response = JSON.parse(json);
+        if (true == response.mail) {
+            var alertDialog = Titanium.UI.createAlertDialog({
+                title: "Success",
+                message: "Your order has been submitted (check the email you used in your submit_order.php file)",
+                buttonNames: [ "OK" ]
+            });
+            alertDialog.show();
+            alertDialog.addEventListener("click", function() {
+                Ti.App.fireEvent("resetApp");
+            });
+        } else {
+            alert("PHP failed to send the order to the email provided in submit_order.php. Are you sure you have a mail client on your server?");
+            fname.enabled = false;
+            lname.enabled = false;
+            email.enabled = false;
+            phone.enabled = false;
+        }
+    };
+    contactReq.onerror = function(event) {
+        alert("Network error: " + JSON.stringify(event));
+        fname.enabled = false;
+        lname.enabled = false;
+        email.enabled = false;
+        phone.enabled = false;
+    };
     $.contact.open();
     __defers["$.__views.contact!open!doOpen"] && $.__views.contact.addEventListener("open", doOpen);
     _.extend($, exports);

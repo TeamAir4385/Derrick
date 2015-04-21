@@ -1,9 +1,9 @@
 exports.definition = {
-	config : {
+	config: {
 
-		adapter : {
-			type : "acs",
-			collection_name : "users"
+		adapter: {
+			type: "acs",
+			collection_name: "user"
 		}
 	},
 	extendModel : function(Model) {
@@ -54,4 +54,3 @@ exports.definition = {
 		return Collection;
 	}
 };
-
