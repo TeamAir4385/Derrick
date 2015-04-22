@@ -18,6 +18,16 @@ function Controller() {
             e.source.activity.invalidateOptionsMenu();
         }
     }
+    function addElement(ele1, ele2) {
+        var view = Ti.UI.createView({
+            width: "100%",
+            height: Ti.UI.SIZE,
+            top: 5
+        });
+        view.add(ele1);
+        view.add(ele2);
+        scrollView.add(view);
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "contact";
     if (arguments[0]) {
@@ -60,7 +70,7 @@ function Controller() {
         id: "lvContainer"
     });
     $.__views.contact.add($.__views.lvContainer);
-    $.__views.textField1 = Ti.UI.createTextField({
+    $.__views.fname = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -75,11 +85,11 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "textField1",
+        id: "fname",
         hintText: "First Name"
     });
-    $.__views.lvContainer.add($.__views.textField1);
-    $.__views.textField2 = Ti.UI.createTextField({
+    $.__views.lvContainer.add($.__views.fname);
+    $.__views.lname = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -94,11 +104,11 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "textField2",
+        id: "lname",
         hintText: "Last Name"
     });
-    $.__views.lvContainer.add($.__views.textField2);
-    $.__views.textField3 = Ti.UI.createTextField({
+    $.__views.lvContainer.add($.__views.lname);
+    $.__views.email = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -113,11 +123,11 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "textField3",
+        id: "email",
         hintText: "Email Address"
     });
-    $.__views.lvContainer.add($.__views.textField3);
-    $.__views.textField4 = Ti.UI.createTextField({
+    $.__views.lvContainer.add($.__views.email);
+    $.__views.phone = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -132,10 +142,10 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "textField4",
+        id: "phone",
         hintText: "Phone Number"
     });
-    $.__views.lvContainer.add($.__views.textField4);
+    $.__views.lvContainer.add($.__views.phone);
     $.__views.submit = Ti.UI.createButton({
         id: "submit",
         title: "Submit",
@@ -147,120 +157,107 @@ function Controller() {
     _.extend($, $.__views);
     arguments[0] || {};
     var win = Ti.UI.currentWindow;
-    var contactReq = Titanium.Network.createHTTPClient();
-    var fname = Titanium.UI.createTextField({
+    Titanium.Network.createHTTPClient();
+    var scrollView = Titanium.UI.createView({
+        width: Ti.UI.FILL,
+        height: Ti.UI.SIZE,
+        layout: "vertical",
+        top: 5,
+        borderRadius: 10,
+        backgroundColor: "white",
+        showVerticalScrollIndicator: true,
+        showHorizontalScrollIndicator: false
+    });
+    win.add(scrollView);
+    var Pseudo = Titanium.UI.createLabel({
+        color: "#000",
+        left: 20,
+        height: Ti.UI.SIZE,
+        width: Ti.UI.SIZE,
+        text: "Username"
+    });
+    var username = Titanium.UI.createTextField({
         color: "#336699",
-        top: 100,
-        left: 10,
-        width: 300,
-        height: 40,
-        hintText: "First Name",
-        backgroundImage: "../images/textfield.png",
-        paddingLeft: 8,
-        paddingRight: 8,
+        right: 20,
+        width: 250,
+        height: Ti.UI.SIZE,
+        hintText: "min 4 car",
         keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
         returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+        borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
         suppressReturn: false
     });
-    var lname = Titanium.UI.createTextField({
+    addElement(Pseudo, username);
+    var passwordd = Titanium.UI.createLabel({
+        color: "#000",
+        left: 20,
+        height: Ti.UI.SIZE,
+        width: Ti.UI.SIZE,
+        text: "Password"
+    });
+    var password1 = Titanium.UI.createTextField({
         color: "#336699",
-        top: 100,
-        left: 10,
-        width: 300,
-        height: 40,
-        hintText: "Last Name",
-        backgroundImage: "../images/textfield.png",
-        paddingLeft: 8,
-        paddingRight: 8,
+        right: 20,
+        width: 250,
+        height: Ti.UI.SIZE,
+        hintText: "Password",
+        passwordMask: true,
         keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
         returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         suppressReturn: false
+    });
+    addElement(passwordd, password1);
+    var passworddd = Titanium.UI.createLabel({
+        color: "#000",
+        left: 20,
+        height: Ti.UI.SIZE,
+        width: Ti.UI.SIZE,
+        text: "Confirm Password"
+    });
+    var password2 = Titanium.UI.createTextField({
+        color: "#336699",
+        right: 20,
+        width: 250,
+        height: Ti.UI.SIZE,
+        hintText: "Cofirm Password ",
+        passwordMask: true,
+        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
+        returnKeyType: Titanium.UI.RETURNKEY_NEXT,
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+        suppressReturn: false
+    });
+    addElement(passworddd, password2);
+    var emaill = Titanium.UI.createLabel({
+        color: "#000",
+        left: 20,
+        height: Ti.UI.SIZE,
+        width: Ti.UI.SIZE,
+        text: "email"
     });
     var email = Titanium.UI.createTextField({
         color: "#336699",
-        top: 140,
-        left: 10,
-        width: 300,
-        height: 40,
-        hintText: "Email",
-        backgroundImage: "../images/textfield.png",
-        paddingLeft: 8,
-        paddingRight: 8,
+        right: 20,
+        width: 250,
+        height: Ti.UI.SIZE,
+        hintText: "my@email.com",
         keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
-        returnKeyType: Titanium.UI.RETURNKEY_NEXT,
-        suppressReturn: false
+        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT,
+        borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
     });
-    var phone = Titanium.UI.createTextField({
-        color: "#336699",
-        top: 180,
-        left: 10,
-        width: 300,
-        height: 40,
-        hintText: "Phone",
-        backgroundImage: "../images/textfield.png",
-        paddingLeft: 8,
-        paddingRight: 8,
-        keyboardType: Titanium.UI.KEYBOARD_DEFAULT,
-        returnKeyType: Titanium.UI.RETURNKEY_DEFAULT
-    });
-    fname.addEventListener("return", function() {
-        lname.focus();
-    });
-    lname.addEventListener("return", function() {
-        email.focus();
-    });
-    email.addEventListener("return", function() {
-        phone.focus();
-    });
-    win.add(fname);
-    win.add(lname);
-    win.add(email);
-    win.add(phone);
-    $.contact.addEventListener("click", function() {
-        if ("" == fname.value || "" == lname.value || "" == email.value || "" == phone.value) alert("All fields are required"); else {
-            fname.enabled = false;
-            lname.enabled = false;
-            email.enabled = false;
-            phone.enabled = false;
-            contactReq.open("POST", "http://localhost/submit_order.php");
-            var params = {
-                fname: fname.value,
-                lname: lname.value,
-                email: email.value,
-                phone: phone.value
-            };
-            contactReq.send(params);
+    addElement(emaill, email);
+    var createBtn = Titanium.UI.createButton({
+        title: "Create Account",
+        width: 150,
+        height: Ti.UI.SIZE,
+        borderRadius: 1,
+        font: {
+            fontFamily: "Arial",
+            fontWeight: "bold",
+            fontSize: 14
         }
     });
-    contactReq.onload = function() {
-        var json = this.responseText;
-        var response = JSON.parse(json);
-        if (true == response.mail) {
-            var alertDialog = Titanium.UI.createAlertDialog({
-                title: "Success",
-                message: "Your order has been submitted (check the email you used in your submit_order.php file)",
-                buttonNames: [ "OK" ]
-            });
-            alertDialog.show();
-            alertDialog.addEventListener("click", function() {
-                Ti.App.fireEvent("resetApp");
-            });
-        } else {
-            alert("PHP failed to send the order to the email provided in submit_order.php. Are you sure you have a mail client on your server?");
-            fname.enabled = false;
-            lname.enabled = false;
-            email.enabled = false;
-            phone.enabled = false;
-        }
-    };
-    contactReq.onerror = function(event) {
-        alert("Network error: " + JSON.stringify(event));
-        fname.enabled = false;
-        lname.enabled = false;
-        email.enabled = false;
-        phone.enabled = false;
-    };
-    $.contact.open();
+    win.add(createBtn);
     __defers["$.__views.contact!open!doOpen"] && $.__views.contact.addEventListener("open", doOpen);
     _.extend($, exports);
 }

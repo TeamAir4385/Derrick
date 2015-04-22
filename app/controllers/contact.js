@@ -19,147 +19,124 @@ function doOpen(e){
 	}	
 }
 
-//-- First Name Text Field
-var fname = Titanium.UI.createTextField({
-	color:'#336699',
-	top:100,
-	left:10,
-	width:300,
-	height:40,
-	hintText:'First Name',
-	backgroundImage:'../images/textfield.png',
-	paddingLeft:8,
-	paddingRight:8,
-	keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
-	suppressReturn:false
+var scrollView = Titanium.UI.createView({
+   width:Ti.UI.FILL,
+   height:Ti.UI.SIZE,
+   layout:"vertical",
+   top:5,
+   borderRadius:10,
+   backgroundColor:"white",
+   showVerticalScrollIndicator:true,
+   showHorizontalScrollIndicator:false
 });
-
-//-- Last Name Text Field
-var lname = Titanium.UI.createTextField({
-	color:'#336699',
-	top:100,
-	left:10,
-	width:300,
-	height:40,
-	hintText:'Last Name',
-	backgroundImage:'../images/textfield.png',
-	paddingLeft:8,
-	paddingRight:8,
-	keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
-	suppressReturn:false
+win.add(scrollView);
+var Pseudo=Titanium.UI.createLabel({
+    color:'#000',
+    left:20,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    text:'Username'
 });
-
-//-- Email Text Field
+ 
+var username = Titanium.UI.createTextField({
+    color:'#336699',
+    right:20,
+    width:250,
+    height:Ti.UI.SIZE,
+    hintText:'min 4 car',
+    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    returnKeyType:Titanium.UI.RETURNKEY_NEXT,
+    borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+    suppressReturn:false
+});
+ 
+addElement(Pseudo,username);
+ 
+var passwordd = Titanium.UI.createLabel({
+    color:'#000',
+    left:20,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    text:'Password'
+});
+var password1 = Titanium.UI.createTextField({
+    color:'#336699',
+    right:20,
+    width:250,
+    height:Ti.UI.SIZE,
+    hintText:'Password',
+    passwordMask:true,
+    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    returnKeyType:Titanium.UI.RETURNKEY_NEXT,
+    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+    suppressReturn:false
+});
+ 
+addElement(passwordd,password1);
+ 
+var passworddd = Titanium.UI.createLabel({
+    color:'#000',
+    left:20,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    text:'Confirm Password'
+ 
+});
+var password2 = Titanium.UI.createTextField({
+    color:'#336699',
+    right:20,
+    width:250,
+    height:Ti.UI.SIZE,
+    hintText:'Cofirm Password ',
+    passwordMask:true,
+    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    returnKeyType:Titanium.UI.RETURNKEY_NEXT,
+    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+    suppressReturn:false
+});
+ 
+addElement(passworddd,password2);
+ 
+ 
+var emaill = Titanium.UI.createLabel({
+    color:'#000',
+    left:20,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    text:'email'
+ 
+});
 var email = Titanium.UI.createTextField({
-	color:'#336699',
-	top:140,
-	left:10,
-	width:300,
-	height:40,
-	hintText:'Email',
-	backgroundImage:'../images/textfield.png',
-	paddingLeft:8,
-	paddingRight:8,
-	keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-	returnKeyType:Titanium.UI.RETURNKEY_NEXT,
-	suppressReturn:false
+    color:'#336699',
+    right:20,
+    width:250,
+    height:Ti.UI.SIZE,
+    hintText:'my@email.com',
+    keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
+    returnKeyType:Titanium.UI.RETURNKEY_DEFAULT,
+    borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
-
-//-- Phone Number Field
-var phone = Titanium.UI.createTextField({
-	color:'#336699',
-	top:180,
-	left:10,
-	width:300,
-	height:40,
-	hintText:'Phone',
-	backgroundImage:'../images/textfield.png',
-	paddingLeft:8,
-	paddingRight:8,
-	keyboardType:Titanium.UI.KEYBOARD_DEFAULT,
-	returnKeyType:Titanium.UI.RETURNKEY_DEFAULT
+ 
+addElement(emaill,email);
+ 
+var createBtn = Titanium.UI.createButton({
+    title:'Create Account',
+    width:150,
+    height:Ti.UI.SIZE,
+    borderRadius:1,
+    font:{fontFamily:'Arial',fontWeight:'bold',fontSize:14}
 });
-
-//-- Listen for the next click on the key board
-fname.addEventListener('return',function(){lname.focus();});
-lname.addEventListener('return',function(){email.focus();});
-email.addEventListener('return',function(){phone.focus();});
-
-win.add(fname);
-win.add(lname);
-win.add(email);
-win.add(phone);
-
-//-- Submit order. Check if the text fields are blank
-$.contact.addEventListener('click',function(){
-	if (fname.value == '' || lname.value == '' || email.value == '' || phone.value == '')
-	{
-		alert('All fields are required');
-	}
-	else
-	{
-		//-- Disable fields and buttons before making are http request
-		fname.enabled 	= false;
-		lname.enabled 	= false;
-		email.enabled 	= false;
-		phone.enabled 	= false;
-		
-		//-- URL to submit_order.php
-		contactReq.open('POST','http://localhost/submit_order.php');
-		var params = {
-			fname: fname.value,
-			lname: lname.value,
-			email: email.value,
-			phone: phone.value
-		
-		};
-		contactReq.send(params);
-	}
-});
-
-
-//-- onLoad method for our http request
-contactReq.onload = function()
+win.add(createBtn);
+ 
+function addElement(ele1,ele2)
 {
-	var json = this.responseText;
-	var response = JSON.parse(json);
-	
-	//-- Mail was sent
-	if (response.mail == true)
-	{
-		var alertDialog = Titanium.UI.createAlertDialog({
-			title: 'Success',
-			message: 'Your order has been submitted (check the email you used in your submit_order.php file)',
-			buttonNames: ['OK']
-		});
-		alertDialog.show();
-		alertDialog.addEventListener('click',function(e)
-		{
-			Ti.App.fireEvent('resetApp');
-		});	
-	}
-	else
-	{
-		//-- Mail failed
-		alert("PHP failed to send the order to the email provided in submit_order.php. Are you sure you have a mail client on your server?");
-		fname.enabled 	= false;
-		lname.enabled 	= false;
-		email.enabled 	= false;
-		phone.enabled 	= false;	
-	}
-};
-
-//-- Network error
-contactReq.onerror = function(event)
-{
-	alert('Network error: ' + JSON.stringify(event));
-	fname.enabled 	= false;
-	lname.enabled 	= false;
-	email.enabled 	= false;
-	phone.enabled 	= false;
-};
-
-$.contact.open();
+    var view=Ti.UI.createView({
+        width:'100%',
+        height:Ti.UI.SIZE,
+        top:5,
+    });
+    view.add(ele1);
+    view.add(ele2);
+    scrollView.add(view);
+}
 
