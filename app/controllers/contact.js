@@ -18,7 +18,7 @@ function doOpen(e){
 		e.source.activity.invalidateOptionsMenu();
 	}	
 }
-
+/*
 var scrollView = Titanium.UI.createView({
    width:Ti.UI.FILL,
    height:Ti.UI.SIZE,
@@ -139,4 +139,43 @@ function addElement(ele1,ele2)
     view.add(ele2);
     scrollView.add(view);
 }
+*/
+ 
+$.submit.addEventListener('click', function(e) {
+	
+	var emailDialog = Titanium.UI.createEmailDialog();
+		emailDialog.setSubject("I'm curious about Going Green!");
+		emailDialog.setToRecipients(['foo@gmail.com']);
+		emailDialog.setCcRecipients(['foo@gmail.com']);
+		emailDialog.setBccRecipients(['foo@gmail.com']);
+		
+	if (Ti.Platform.name == 'iPhone OS') {
+    emailDialog.setMessageBody("<b>I'm curious about what the College of Business has to offer!</b>å");
+    emailDialog.setHtml(true);
+    emailDialog.setBarColor('#336699');
+	} else {
+	    emailDialog.setMessageBody("I'm curious abuot what the College of Business has to offcer!");
+	}
+	
+	emailDialog.addEventListener('complete',function(e)
+	{
+	    if (e.result == emailDialog.SENT)
+	    {
+	        if (Ti.Platform.osname != 'android') {
+	            // android doesn't give us useful result codes.
+	            // it anyway shows a toast.
+	            alert("message was sent");
+	        }
+	    }
+	    else
+	    {
+	        alert("message was not sent. result = " + e.result);
+	    }
+	});
+	
+	emailDialog.open();
+});
+
+$.contact.open();
+
 
