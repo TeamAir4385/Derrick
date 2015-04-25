@@ -60,7 +60,7 @@ function Controller() {
         id: "lvContainer"
     });
     $.__views.contact.add($.__views.lvContainer);
-    $.__views.fname = Ti.UI.createTextField({
+    $.__views.textField1 = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -75,11 +75,11 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "fname",
+        id: "textField1",
         hintText: "First Name"
     });
-    $.__views.lvContainer.add($.__views.fname);
-    $.__views.lname = Ti.UI.createTextField({
+    $.__views.lvContainer.add($.__views.textField1);
+    $.__views.textField2 = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -94,11 +94,11 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "lname",
+        id: "textField2",
         hintText: "Last Name"
     });
-    $.__views.lvContainer.add($.__views.lname);
-    $.__views.email = Ti.UI.createTextField({
+    $.__views.lvContainer.add($.__views.textField2);
+    $.__views.textField3 = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -113,11 +113,11 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "email",
+        id: "textField3",
         hintText: "Email Address"
     });
-    $.__views.lvContainer.add($.__views.email);
-    $.__views.phone = Ti.UI.createTextField({
+    $.__views.lvContainer.add($.__views.textField3);
+    $.__views.textField4 = Ti.UI.createTextField({
         autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         borderStyle: Ti.UI.INPUT_BORDERSTYLE_NONE,
         autocorrect: false,
@@ -132,10 +132,10 @@ function Controller() {
         height: "40dp",
         border: 1,
         borderColor: "#000",
-        id: "phone",
+        id: "textField4",
         hintText: "Phone Number"
     });
-    $.__views.lvContainer.add($.__views.phone);
+    $.__views.lvContainer.add($.__views.textField4);
     $.__views.submit = Ti.UI.createButton({
         id: "submit",
         title: "Submit",
@@ -146,21 +146,6 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
-    Ti.UI.currentWindow;
-    Titanium.Network.createHTTPClient();
-    $.submit.addEventListener("click", function() {
-        var emailDialog = Titanium.UI.createEmailDialog();
-        emailDialog.setSubject("I'm curious about Going Green!");
-        emailDialog.setToRecipients([ "foo@gmail.com" ]);
-        emailDialog.setCcRecipients([ "foo@gmail.com" ]);
-        emailDialog.setBccRecipients([ "foo@gmail.com" ]);
-        emailDialog.setMessageBody("I'm curious abuot what the College of Business has to offcer!");
-        emailDialog.addEventListener("complete", function(e) {
-            e.result == emailDialog.SENT || alert("message was not sent. result = " + e.result);
-        });
-        emailDialog.open();
-    });
-    $.contact.open();
     __defers["$.__views.contact!open!doOpen"] && $.__views.contact.addEventListener("open", doOpen);
     _.extend($, exports);
 }
