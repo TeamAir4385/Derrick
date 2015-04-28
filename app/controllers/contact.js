@@ -175,9 +175,9 @@ $.submit.addEventListener('click', function(e) {
 	
 	var emailDialog = Titanium.UI.createEmailDialog();
 		emailDialog.setSubject("I'm curious about Going Green!");
-		emailDialog.setToRecipients(['ralkkai1337@gmail.com']);
-		emailDialog.setCcRecipients(['ralkkai1337@gmail.com']);
-		emailDialog.setBccRecipients(['ralkkai1337@gmail.com']);
+		emailDialog.setToRecipients(['foo@gmail.com']);
+		emailDialog.setCcRecipients(['foo@gmail.com']);
+		emailDialog.setBccRecipients(['foo@gmail.com']);
 		
 		
 	if (Ti.Platform.name == 'iPhone OS') {
