@@ -18,6 +18,7 @@ function doOpen(e){
 		e.source.activity.invalidateOptionsMenu();
 	}	
 }
+<<<<<<< HEAD
 /*
 var scrollView = Titanium.UI.createView({
    width:Ti.UI.FILL,
@@ -167,6 +168,9 @@ function doClick(e) {
 	emailDialog.setMessageBody($.fname.value);
 }
 */
+=======
+//this will open an email once submit is clicked 
+>>>>>>> 62789ddebe100a603b8b9d9caf1927694b27a2c8
 $.submit.addEventListener('click', function(e) {
 	
 	var emailDialog = Titanium.UI.createEmailDialog();
@@ -216,8 +220,11 @@ $.submit.addEventListener('click', function(e) {
 	emailDialog.open();
 });
 
+<<<<<<< HEAD
 /*function doClick(e) {
 	alert($.fname.value);
 }*/
 
+=======
+>>>>>>> 62789ddebe100a603b8b9d9caf1927694b27a2c8
 $.contact.open();
