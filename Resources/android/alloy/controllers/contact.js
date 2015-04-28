@@ -154,7 +154,7 @@ function Controller() {
         emailDialog.setToRecipients([ "foo@gmail.com" ]);
         emailDialog.setCcRecipients([ "foo@gmail.com" ]);
         emailDialog.setBccRecipients([ "foo@gmail.com" ]);
-        emailDialog.setMessageBody("I'm curious abuot what the College of Business has to offcer!");
+        emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!\n\nFirst Name: " + $.fname.value + "\nLast Name: " + $.lname.value + "\nEmail: " + $.email.value + "\nPhone number: " + $.phone.value);
         emailDialog.addEventListener("complete", function(e) {
             e.result == emailDialog.SENT || alert("message was not sent. result = " + e.result);
         });

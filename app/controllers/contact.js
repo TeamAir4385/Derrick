@@ -18,7 +18,9 @@ function doOpen(e){
 		e.source.activity.invalidateOptionsMenu();
 	}	
 }
+
 //this will open an email once submit is clicked 
+
 $.submit.addEventListener('click', function(e) {
 	
 	var emailDialog = Titanium.UI.createEmailDialog();
@@ -27,12 +29,24 @@ $.submit.addEventListener('click', function(e) {
 		emailDialog.setCcRecipients(['foo@gmail.com']);
 		emailDialog.setBccRecipients(['foo@gmail.com']);
 		
+		
 	if (Ti.Platform.name == 'iPhone OS') {
-    emailDialog.setMessageBody("<b>I'm curious about what the College of Business has to offer!</b>å");
-    emailDialog.setHtml(true);
-    emailDialog.setBarColor('#336699');
+		emailDialog.setMessageBody("<b>I'm curious about what the College of Business has to offer!" + '\n' + '\n' +
+			'First Name: ' + $.fname.value + '\n' +
+			'Last Name : ' + $.lname.value + '\n' +
+			'Email: ' + $.email.value + '\n' +
+			'Phone number: ' + $.phone.value + "</b>å");	
+	    //emailDialog.setMessageBody("<b>I'm curious about what the College of Business has to offer!</b>å");
+	    emailDialog.setHtml(true);
+	    emailDialog.setBarColor('#336699');
 	} else {
-	    emailDialog.setMessageBody("I'm curious abuot what the College of Business has to offcer!");
+		emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!" + '\n' + '\n' +
+			'First Name: ' + $.fname.value + '\n' +
+			'Last Name: ' + $.lname.value + '\n' +
+			'Email: ' + $.email.value + '\n' +
+			'Phone number: ' + $.phone.value);
+		
+	    //emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!");
 	}
 	
 	emailDialog.addEventListener('complete',function(e)
