@@ -140,21 +140,59 @@ function addElement(ele1,ele2)
     scrollView.add(view);
 }
 */
+/* 
+https://sendgrid.com/blog/send-email-titanium-sendgrid/
+
+var sendgrid = require('tisendgrid')('SENDGRID-USERNAME', 'SENDGRID-PASSOWORD');
+var email = sendgrid.Email({
+  to: 'john@email.com',
+  from: 'doe@email.com',
+  subject: 'Welcome!',
+  text: 'This is inside of the template!'
+});
  
+email.addFilter('template', 'enable', 1);
+email.addFilter('template', 'text/html',
+'<html><body>General template stuff.<% body %></body></html>');
+sendgrid.send(email, function (e) {
+  if (e) {
+    console.log('Oups :( : ' + e);
+  }
+});
+*/
+/*
+function doClick(e) {
+	var emailDialog = Titanium.UI.createEmailDialog();
+	
+	emailDialog.setMessageBody($.fname.value);
+}
+*/
 $.submit.addEventListener('click', function(e) {
 	
 	var emailDialog = Titanium.UI.createEmailDialog();
 		emailDialog.setSubject("I'm curious about Going Green!");
-		emailDialog.setToRecipients(['foo@gmail.com']);
-		emailDialog.setCcRecipients(['foo@gmail.com']);
-		emailDialog.setBccRecipients(['foo@gmail.com']);
+		emailDialog.setToRecipients(['ralkkai1337@gmail.com']);
+		emailDialog.setCcRecipients(['ralkkai1337@gmail.com']);
+		emailDialog.setBccRecipients(['ralkkai1337@gmail.com']);
+		
 		
 	if (Ti.Platform.name == 'iPhone OS') {
-    emailDialog.setMessageBody("<b>I'm curious about what the College of Business has to offer!</b>å");
-    emailDialog.setHtml(true);
-    emailDialog.setBarColor('#336699');
+		emailDialog.setMessageBody("<b>I'm curious about what the College of Business has to offer!" + '\n' + '\n' +
+			'First Name: ' + $.fname.value + '\n' +
+			'Last Name : ' + $.lname.value + '\n' +
+			'Email: ' + $.email.value + '\n' +
+			'Phone number: ' + $.phone.value + "</b>å");	
+	    //emailDialog.setMessageBody("<b>I'm curious about what the College of Business has to offer!</b>å");
+	    emailDialog.setHtml(true);
+	    emailDialog.setBarColor('#336699');
 	} else {
-	    emailDialog.setMessageBody("I'm curious abuot what the College of Business has to offcer!");
+		emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!" + '\n' + '\n' +
+			'First Name: ' + $.fname.value + '\n' +
+			'Last Name: ' + $.lname.value + '\n' +
+			'Email: ' + $.email.value + '\n' +
+			'Phone number: ' + $.phone.value);
+		
+	    //emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!");
 	}
 	
 	emailDialog.addEventListener('complete',function(e)
@@ -173,9 +211,13 @@ $.submit.addEventListener('click', function(e) {
 	    }
 	});
 	
+
+	
 	emailDialog.open();
 });
 
+/*function doClick(e) {
+	alert($.fname.value);
+}*/
+
 $.contact.open();
-
-

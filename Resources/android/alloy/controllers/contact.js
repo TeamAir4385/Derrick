@@ -146,20 +146,18 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     arguments[0] || {};
-    var win = Ti.UI.currentWindow;
+    Ti.UI.currentWindow;
     Titanium.Network.createHTTPClient();
-    fname.value;
     $.submit.addEventListener("click", function() {
         var emailDialog = Titanium.UI.createEmailDialog();
         emailDialog.setSubject("I'm curious about Going Green!");
-        emailDialog.setToRecipients([ "foo@gmail.com" ]);
-        emailDialog.setCcRecipients([ "foo@gmail.com" ]);
-        emailDialog.setBccRecipients([ "foo@gmail.com" ]);
-        emailDialog.setMessageBody("I'm curious abuot what the College of Business has to offcer!");
+        emailDialog.setToRecipients([ "ralkkai1337@gmail.com" ]);
+        emailDialog.setCcRecipients([ "ralkkai1337@gmail.com" ]);
+        emailDialog.setBccRecipients([ "ralkkai1337@gmail.com" ]);
+        emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!\n\nFirst Name: " + $.fname.value + "\nLast Name: " + $.lname.value + "\nEmail: " + $.email.value + "\nPhone number: " + $.phone.value);
         emailDialog.addEventListener("complete", function(e) {
             e.result == emailDialog.SENT || alert("message was not sent. result = " + e.result);
         });
-        win.add(fname);
         emailDialog.open();
     });
     $.contact.open();
