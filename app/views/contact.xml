@@ -7,6 +7,6 @@
 	        <TextField id="email" class='tfWrapper' hintText="Email Address"  />
 	        <TextField id="phone" class='tfWrapper' hintText="Phone Number"  />
         </View>
-        <Button id="submit" title="Submit" color="#fff" bottom="150"/>
+        <Button id="submit" title="Submit" color="#fff" bottom="150" />
 	</Window>
 </Alloy>
