@@ -26,8 +26,6 @@ $.submit.addEventListener('click', function(e) {
 	var emailDialog = Titanium.UI.createEmailDialog();
 		emailDialog.setSubject("I'm curious about Going Green!");
 		emailDialog.setToRecipients(['foo@gmail.com']);
-		emailDialog.setCcRecipients(['foo@gmail.com']);
-		emailDialog.setBccRecipients(['foo@gmail.com']);
 		
 		
 	if (Ti.Platform.name == 'iPhone OS') {
@@ -49,7 +47,7 @@ $.submit.addEventListener('click', function(e) {
 	    //emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!");
 	}
 	
-	emailDialog.addEventListener('complete',function(e)
+	emailDialog.addEventListener('complete', function(e)
 	{
 	    if (e.result == emailDialog.SENT)
 	    {
@@ -58,14 +56,14 @@ $.submit.addEventListener('click', function(e) {
 	            // it anyway shows a toast.
 	            alert("message was sent");
 	        }
-	    }
-	    else
-	    {
+	    } else {
 	        alert("message was not sent. result = " + e.result);
 	    }
 	});
 	
 	emailDialog.open();
 });
+
+
 //opens
 $.contact.open();

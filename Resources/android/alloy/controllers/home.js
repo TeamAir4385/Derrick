@@ -42,6 +42,23 @@ function Controller() {
     function contactUs() {
         Alloy.createController("contact").getView();
     }
+    function deviceTokenSuccess(e) {
+        alert("please work" + e.deviceToken);
+        deviceToken = e.deviceToken;
+        subscribeToChannel(deviceToken);
+    }
+    function deviceTokenError(e) {
+        alert("Failed to register for push notifications! " + e.error);
+    }
+    function subscribeToChannel(deviceToken) {
+        Cloud.PushNotifications.subscribeToken({
+            device_token: deviceToken,
+            channel: "news_alerts",
+            type: "android"
+        }, function(e) {
+            alert(e.success ? "Subscribed" : "Error:\n" + (e.error && e.message || JSON.stringify(e)));
+        });
+    }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "home";
     if (arguments[0]) {
@@ -147,6 +164,16 @@ function Controller() {
     });
     $.youtubeButton.addEventListener("click", function() {
         Ti.Platform.openURL("https://www.youtube.com/channel/UCENCoEEcsLJvyWaMjonwFuQ");
+    });
+    var CloudPush = require("ti.cloudpush");
+    var Cloud = require("ti.cloud");
+    var deviceToken = null;
+    CloudPush.retrieveDeviceToken({
+        success: deviceTokenSuccess,
+        error: deviceTokenError
+    });
+    CloudPush.addEventListener("callback", function(evt) {
+        alert("Notification received: " + evt.payload);
     });
     $.home.open();
     __defers["$.__views.__alloyId4!click!clickedSettings"] && $.__views.__alloyId4.addEventListener("click", clickedSettings);

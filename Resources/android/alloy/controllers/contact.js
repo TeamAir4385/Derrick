@@ -151,15 +151,7 @@ function Controller() {
     $.submit.addEventListener("click", function() {
         var emailDialog = Titanium.UI.createEmailDialog();
         emailDialog.setSubject("I'm curious about Going Green!");
-<<<<<<< HEAD
         emailDialog.setToRecipients([ "foo@gmail.com" ]);
-        emailDialog.setCcRecipients([ "foo@gmail.com" ]);
-        emailDialog.setBccRecipients([ "foo@gmail.com" ]);
-=======
-        emailDialog.setToRecipients([ "ralkkai1337@gmail.com" ]);
-        emailDialog.setCcRecipients([ "ralkkai1337@gmail.com" ]);
-        emailDialog.setBccRecipients([ "ralkkai1337@gmail.com" ]);
->>>>>>> 9a8ad639f2cb6a4eeb8c2d19335b13ea8f6e40ff
         emailDialog.setMessageBody("I'm curious about what the College of Business has to offer!\n\nFirst Name: " + $.fname.value + "\nLast Name: " + $.lname.value + "\nEmail: " + $.email.value + "\nPhone number: " + $.phone.value);
         emailDialog.addEventListener("complete", function(e) {
             e.result == emailDialog.SENT || alert("message was not sent. result = " + e.result);
