@@ -8,26 +8,26 @@ function __processArg(obj, key) {
 }
 
 function Controller() {
-    function __alloyId7() {
-        $.__views.index.removeEventListener("open", __alloyId7);
+    function __alloyId2() {
+        $.__views.index.removeEventListener("open", __alloyId2);
         if ($.__views.index.activity) ; else {
             Ti.API.warn("You attempted to access an Activity on a lightweight Window or other");
             Ti.API.warn("UI component which does not have an Android activity. Android Activities");
             Ti.API.warn("are valid with only windows in TabGroups or heavyweight Windows.");
         }
     }
-    function __alloyId11() {
-        $.__views.index.removeEventListener("open", __alloyId11);
+    function __alloyId6() {
+        $.__views.index.removeEventListener("open", __alloyId6);
         if ($.__views.index.activity) $.__views.index.activity.onCreateOptionsMenu = function(e) {
-            var __alloyId10 = {
+            var __alloyId5 = {
                 title: "Settings",
                 icon: "/images/overflow.png",
                 showAsAction: Ti.Android.SHOW_AS_ACTION_IF_ROOM,
-                id: "__alloyId9"
+                id: "__alloyId4"
             };
-            $.__views.__alloyId9 = e.menu.add(_.pick(__alloyId10, Alloy.Android.menuItemCreateArgs));
-            $.__views.__alloyId9.applyProperties(_.omit(__alloyId10, Alloy.Android.menuItemCreateArgs));
-            clickedSettings ? $.__views.__alloyId9.addEventListener("click", clickedSettings) : __defers["$.__views.__alloyId9!click!clickedSettings"] = true;
+            $.__views.__alloyId4 = e.menu.add(_.pick(__alloyId5, Alloy.Android.menuItemCreateArgs));
+            $.__views.__alloyId4.applyProperties(_.omit(__alloyId5, Alloy.Android.menuItemCreateArgs));
+            clickedSettings ? $.__views.__alloyId4.addEventListener("click", clickedSettings) : __defers["$.__views.__alloyId4!click!clickedSettings"] = true;
         }; else {
             Ti.API.warn("You attempted to attach an Android Menu to a lightweight Window");
             Ti.API.warn("or other UI component which does not have an Android activity.");
@@ -80,8 +80,8 @@ function Controller() {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
-    $.__views.index.addEventListener("open", __alloyId7);
-    $.__views.index.addEventListener("open", __alloyId11);
+    $.__views.index.addEventListener("open", __alloyId2);
+    $.__views.index.addEventListener("open", __alloyId6);
     $.__views.go = Ti.UI.createImageView({
         top: "15%",
         id: "go",
@@ -176,7 +176,7 @@ function Controller() {
         alert("Notification received: " + evt.payload);
     });
     $.index.open();
-    __defers["$.__views.__alloyId9!click!clickedSettings"] && $.__views.__alloyId9.addEventListener("click", clickedSettings);
+    __defers["$.__views.__alloyId4!click!clickedSettings"] && $.__views.__alloyId4.addEventListener("click", clickedSettings);
     __defers["$.__views.contactButton!click!contactUs"] && $.__views.contactButton.addEventListener("click", contactUs);
     _.extend($, exports);
 }
